@@ -62,11 +62,11 @@ AcadFlow Platform
 │ │ ├── Receptionist
 │ │ └── Accountant (Future)
 │ │
-│ ├── Programs
+│ ├── Enrollments
 │ │
 │ ├── Students
 │ │
-│ ├── Enrollments
+│ ├── Programs
 │ │
 │ ├── Events
 │ │
@@ -542,3 +542,51 @@ This diagram tells the real story:
 - It is assigned to a **Coach**.
 
 This one diagram is so important that I think it should become the **official architecture diagram of AcadFlow**. It captures the core business process more accurately than a simple hierarchy, and we'll refer back to it when we design the database and Django models.
+
+⭐Organizational Hierarchy:
+
+AcadFlow Platform
+│
+├── Super User
+│
+└── Academy
+    │
+    ├── Academy Owner
+    │
+    └── Branch
+          │
+          ├── Branch Admin
+          ├── Head Coach
+          ├── Coach
+          ├── Receptionist
+          └── Accountant
+          
+⭐Business Module Relationships:
+
+                    Student
+                       │
+                       │
+                       ▼
+                 Enrollment
+                /     |      \
+               /      |       \
+              ▼       ▼        ▼
+         Program    Branch    Coach
+              │
+              ▼
+        Attendance
+              │
+              ▼
+        Progress Report
+              │
+              ▼
+         Belt Progress*
+              │
+              ▼
+         Certificates
+              │
+              ▼
+            Events
+              │
+              ▼
+           Accounts
